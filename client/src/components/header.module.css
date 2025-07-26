@@ -5,7 +5,6 @@
   background-image: url('../../src/pictures/homeheader3.jpeg');
   background-size: cover;
   background-position: center;
-  z-index: 1; /* Ensure the header is at the right stacking context */
   position: relative;
 }
 
@@ -41,7 +40,7 @@
   border: none;
   color: white;
   cursor: pointer;
-  z-index: 2;
+  z-index: 1002;
   position: absolute;
   left: 20px; /* Keep the hamburger menu on the far left */
 }
@@ -49,5 +48,4 @@
 .navigation {
   display: flex;
   justify-content: center;
-  z-index: 2;
 }

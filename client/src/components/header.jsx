@@ -11,21 +11,23 @@ function Header() {
   };
 
   return (
-    <header className={headerStyles.header}>
-      <button className={headerStyles.hamburger} onClick={toggleSidebar}>
-        &#9776;
-      </button>
+    <>
+      <header className={headerStyles.header}>
+        <button className={headerStyles.hamburger} onClick={toggleSidebar}>
+          &#9776;
+        </button>
 
-      <div className={headerStyles.logoNavbarContainer}>
-        <div className={headerStyles.logoContainer}>
-    
+        <div className={headerStyles.logoNavbarContainer}>
+          <div className={headerStyles.logoContainer}>
+      
+          </div>
+
+          <Navbar />
         </div>
-
-        <Navbar />
-      </div>
+      </header>
 
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-    </header>
+    </>
   );
 }
 
