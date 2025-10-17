@@ -1,0 +1,90 @@
+.authContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--background-color);
+    padding: 20px;
+  }
+  
+  .authCard {
+    background: var(--card-background);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 0 20px var(--shadow-medium);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .authTitle {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: var(--title-color);
+    font-weight: bold;
+  }
+  
+  .authForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .formGroup {
+    text-align: right;
+  }
+  
+  .formGroup label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-weight: 500;
+  }
+  
+  .formInput {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--background-secondary);
+    color: var(--text-color);
+    font-size: 1rem;
+  }
+  
+  .formInput:focus {
+    outline: none;
+    border-color: var(--main-color);
+    box-shadow: 0 0 0 3px rgba(var(--main-color-rgb), 0.2);
+  }
+  
+  .authButton {
+    background-color: var(--main-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 10px;
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  .authButton:hover {
+    background-color: var(--main2-color);
+  }
+  
+  .authLink {
+    margin-top: 20px;
+    color: var(--text-color-light);
+  }
+  
+  .authLink a {
+    color: var(--main-color);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .authLink a:hover {
+    text-decoration: underline;
+  }

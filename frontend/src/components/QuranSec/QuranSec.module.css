@@ -1,0 +1,232 @@
+.container {
+    padding: 50px 30px;
+    text-align: center;
+    background: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+  }
+  
+  .title {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: var(--title-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 25px;
+    justify-items: center;
+  }
+  
+  .card {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+    width: 230px;
+    height: 180px;
+    box-shadow: 0 0 20px var(--shadow-medium);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px var(--shadow-medium);
+  }
+  
+  .cardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .number {
+    background: var(--main-color);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--background-color);
+  }
+  
+  .englishName {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  .cardBody {
+    text-align: center;
+  }
+  
+  .arabicName {
+    font-size: 1.6rem;
+    margin: 8px 0;
+    font-family: "Amiri", serif;
+    color: var(--main-color);
+  }
+  
+  .revelation {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    color: var(--text-color-light);
+  }
+  
+  .ayahCount {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    color: var(--text-color-light);
+  }
+  
+  /* Modal for Surah Ayahs */
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: var(--background-color);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+  }
+  
+  .modalContent {
+    background: var(--card-background);
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+  }
+  
+  .closeBtn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.3rem;
+    background: transparent;
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+  }
+  
+  .modalTitle {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-family: "Amiri", serif;
+    color: var(--title-color);
+  }
+  
+  .ayahList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: right;
+  }
+  
+  .ayah {
+    background: var(--ayah-background-color);
+    border-radius: 10px;
+    padding: 10px 15px;
+    line-height: 1.8;
+    cursor: pointer;
+    transition: background 0.3s;
+    color: var(--text-color);
+  }
+  
+  .ayah:hover {
+    background: var(--main-color);
+    color: var(--background-color);
+  }
+  
+  .ayahText {
+    font-size: 1.1rem;
+    direction: rtl;
+    display: inline-block;
+  }
+  
+  .ayahNum {
+    opacity: 0.9;
+    margin-left: 8px;
+    color: var(--main2-color);
+  }
+  
+  .audioPlayer {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  /* Quranic Ayah Styling */
+.ayahDisplay {
+    background-color: var(--background-secondary);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    direction: rtl;
+    line-height: 2.6;
+    font-size: 1.6rem;
+    font-family: "Amiri Quran", "Scheherazade New", serif;
+    color: var(--text-color);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    max-width: 900px;
+    margin: 30px auto;
+  }
+  
+  .quranText {
+    display: block;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    color: var(--text-color);
+  }
+  
+  .quranText:hover {
+    color: var(--main-color);
+  }
+
+  .markedAyah {
+    background-color: var(--main-color);
+    color: var(--background-color) !important; /* Ensure text color changes */
+    font-weight: bold;
+  }
+
+  .markedIcon {
+    margin-left: 5px;
+    color: var(--background-color);
+    font-size: 0.9rem;
+  }
+  
+  .ayahNum {
+    color: var(--main2-color);
+    font-size: 1.1rem;
+    margin: 0 6px;
+  }
+  
+  .audioPlayer {
+    display: block;
+    margin: 20px auto;
+  }
+  
+  /* Optional title styling */
+  .title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--main-color);
+    font-weight: bold;
+  }
+  

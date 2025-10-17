@@ -1,0 +1,158 @@
+.navbar {
+  width: 100%;
+  height: var(--navbar-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--navbar-color);
+  color: var(--text-color);
+  padding: 0.5rem 1.5rem;
+  box-shadow: 0 2px 10px var(--shadow-light);
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+}
+  
+ .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-right: 0;
+    margin-left: auto;
+   
+  }
+  
+  
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links li a:hover {
+    color: var(--main-color);
+  }
+  
+  .logoutButton {
+    background-color: var(--main-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .logoutButton:hover {
+    background-color: var(--main2-color);
+  }
+
+  /* Theme Toggle alignment */
+  .themeToggle {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Hide hamburger menu on desktop */
+  .menu {
+    display: none;
+  }
+  
+  /* Responsive menu for small screens */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+  
+    .menu {
+      display: block;
+      cursor: pointer;
+    }
+  
+    .menuItems {
+      position: absolute;
+      top: 70px;
+      right: 0;
+      background: var(--navbar-color);
+      box-shadow: 0 2px 8px var(--shadow-medium);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem;
+      gap: 1rem;
+      border-radius: 8px;
+    }
+  
+    .menuItems a {
+      text-decoration: none;
+      color: inherit;
+      width: 100%;
+    }
+
+    .menuItems .logoutButton, .menuItems .themeToggle {
+      width: 100%;
+    }
+  }
+  
+
+.menuItems.open {
+    animation: slideIn 0.7s ease-in-out;
+    
+}
+
+.menuItems.close {
+    animation: slideOut 0.7s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+
+
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  .menuItems {
+    width: 80%;
+  }
+
+  .menuItems a, .menuItems .logoutButton, .menuItems .themeToggle {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+}

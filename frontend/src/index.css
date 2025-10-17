@@ -1,0 +1,131 @@
+/* CSS Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* CSS Variables for consistent theming */
+:root {
+    /* Light Mode Colors */
+    --footer-color: #7a5900;
+    --main-color: #00008B; /* Dark Blue */
+    --main2-color: #6e3500;
+    --title-color: #00008B; /* Dark Blue */
+    --text-color: #CC5500; /* Dark Orange */
+    --text-color-light: #888;
+    --white-color: #FBFEFD;
+    --background-color: #FFFFFF; /* White */
+    /* Light background for light mode */
+    --background-secondary: #F0F0F0;
+    /* Secondary light background */
+    --card-background: #F5F5F5;
+    /* Off-white for cards */
+
+    --border-color: #d4d4cb;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+
+    --navbar-color: #f0f0e8cc;
+    --ayah-background-color: #FFF8F0; /* Light orange tint for ayah background */
+
+    /* Typography */
+    --font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-family-arabic: 'Amiri', 'Traditional Arabic', 'Times New Roman', serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+
+    /* Spacing */
+   
+    /* Transitions */
+    --transition-fast: 0.15s ease-in-out;
+    --transition-normal: 0.3s ease-in-out;
+    --transition-slow: 0.5s ease-in-out;
+}
+
+/* Dark Mode Colors */
+[data-theme="dark"] {
+    --footer-color: #d4af37;
+    --main-color: #66B2FF; /* Lighter Blue for dark mode */
+    --main2-color: #c27c3f;
+    --title-color: #66B2FF; /* Lighter Blue for dark mode */
+    --text-color: #FF9933; /* Lighter Orange for dark mode */
+    --text-color-light: #b0b0b0;
+    --white-color: #FBFEFD;
+    --background-color: #1A2B3C; /* Very Dark Blue */
+    /* Dark background */
+    --background-secondary: #2D445C;
+    /* Secondary dark background */
+    --card-background: #2D445C;
+    /* Darker blue for cards */
+
+    --border-color: #4a6078;
+    --shadow-light: rgba(0, 0, 0, 0.3);
+    --shadow-medium: rgba(0, 0, 0, 0.4);
+
+    --navbar-color: #2c3e50cc;
+    --ayah-background-color: #1A2B3C99; /* Transparent dark blue for ayah background */
+}
+
+/* Base HTML elements */
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+body {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--text-color);
+    /* background-image: linear-gradient(to right, var(--background-color), var(--main-color)); */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Arabic text styling */
+.arabic-text {
+    font-family: var(--font-family-arabic);
+    font-size: var(--font-size-lg);
+    line-height: 2;
+    text-align: right;
+    direction: rtl;
+}
+
+/* //////////////////////// */
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color var(--transition-normal);
+}
+
+a:hover {
+    color: var(--main-color);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}

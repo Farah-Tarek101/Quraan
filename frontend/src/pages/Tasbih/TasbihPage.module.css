@@ -1,0 +1,200 @@
+.container {
+    padding: 50px 30px;
+    text-align: center;
+    background: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--title-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: var(--text-color-light);
+  }
+  
+  .tasbihList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .tasbihItem {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px var(--shadow-light);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .tasbihItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px var(--shadow-medium);
+  }
+  
+  .arabicText {
+    font-family: var(--font-family-arabic);
+    font-size: 1.8rem;
+    color: var(--main-color);
+    margin-bottom: 10px;
+    direction: rtl;
+  }
+  
+  .englishText {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 15px;
+  }
+
+  .counterSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .counter {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--main2-color);
+  }
+
+  .resetButton {
+    background-color: var(--main-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .resetButton:hover {
+    background-color: #003366; /* A darker shade of blue */
+  }
+
+  .countButton {
+    background-color: var(--main-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .countButton:hover {
+    background-color: var(--main2-color);
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 30px 15px;
+    }
+
+    .title {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+
+    .tasbihList {
+      gap: 15px;
+      max-width: 500px;
+    }
+
+    .tasbihItem {
+      padding: 15px;
+    }
+
+    .arabicText {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .englishText {
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .counterSection {
+      gap: 8px;
+    }
+
+    .counter {
+      font-size: 1.3rem;
+    }
+
+    .countButton, .resetButton {
+      padding: 7px 12px;
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 20px 10px;
+    }
+
+    .title {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .tasbihList {
+      gap: 10px;
+      max-width: 100%;
+    }
+
+    .tasbihItem {
+      padding: 12px;
+    }
+
+    .arabicText {
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+
+    .englishText {
+      font-size: 0.8rem;
+      margin-bottom: 8px;
+    }
+
+    .counterSection {
+      flex-direction: column; /* Stack buttons and counter */
+      gap: 5px;
+    }
+
+    .counter {
+      font-size: 1.2rem;
+    }
+
+    .countButton, .resetButton {
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      width: 100%; /* Full width buttons */
+      max-width: 150px; /* Limit button width */
+    }
+  }

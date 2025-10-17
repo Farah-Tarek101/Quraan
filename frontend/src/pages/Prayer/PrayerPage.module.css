@@ -1,0 +1,156 @@
+.container {
+  padding: 50px 30px;
+  text-align: center;
+  background: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  direction: rtl;
+}
+
+.title {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: var(--title-color);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.loading, .error {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.error {
+  color: #ff6b6b;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 25px;
+  justify-items: center;
+  align-items: stretch;
+}
+
+/* 🌙 Prayer Card Design (Matches Quran/Azkar/Hadith Layout) */
+.card {
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 25px 20px;
+  width: 100%;
+  max-width: 300px;
+  height: 220px;
+  box-shadow: 0 0 20px var(--shadow-medium);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px var(--shadow-medium);
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 0.8rem;
+}
+
+.card h3 {
+  color: var(--main-color);
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.time {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-top: 0.5rem;
+  background: var(--ayah-background-color);
+  padding: 8px 16px;
+  border-radius: 12px;
+  letter-spacing: 1px;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 15px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .cardGrid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+
+  .card {
+    height: 180px;
+    padding: 20px;
+  }
+
+  .img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .card h3 {
+    font-size: 1.2rem;
+  }
+
+  .time {
+    font-size: 1.3rem;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 20px 10px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .cardGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .card {
+    max-width: 100%;
+    height: auto;
+    min-height: 160px; /* Ensure a minimum height for mobile cards */
+    padding: 15px;
+  }
+
+  .img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .time {
+    font-size: 1.1rem;
+    padding: 5px 10px;
+  }
+}
