@@ -29,5 +29,8 @@ app.use('/api/azkar', azkarRoutes);
 app.use('/api/hadith', hadithRoutes);
 app.use('/api/auth', authRoutes); // Use auth routes
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Remove the app.listen() call for Vercel deployment
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+export default app; // Export the Express app for Vercel
