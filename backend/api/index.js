@@ -1,3 +1,8 @@
+import express from 'express';
 import app from '../server.js';
 
-export default app;
+const api = express();
+
+api.use('/api', app);
+
+export default api;
