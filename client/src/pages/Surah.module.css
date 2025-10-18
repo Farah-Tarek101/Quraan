@@ -1,0 +1,13 @@
+/* Surah.module.css */
+.surahContainer {
+    padding: 20px;
+  }
+  
+  .surahContainer h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .surahContainer p {
+    font-size: 18px;
+  }

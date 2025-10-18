@@ -1,0 +1,512 @@
+/* Import Google Fonts for Islamic theme */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Lato:wght@300;400;700&family=Crimson+Text:wght@400;600&display=swap');
+
+/* CSS Variables for Theme Support */
+:root {
+  /* Light Theme Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #2C3E50;
+  --text-secondary: #6c757d;
+  --text-accent: #FFD700;
+  --border-color: #dee2e6;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #4A90E2 0%, #2980B9 100%);
+  --gradient-accent: linear-gradient(45deg, #FFD700, #FFA500);
+}
+
+[data-theme="dark"] {
+  /* Dark Theme Colors */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #3d3d3d;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-accent: #FFD700;
+  --border-color: #404040;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --gradient-primary: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
+  --gradient-secondary: linear-gradient(135deg, #2980B9 0%, #1f5f8b 100%);
+  --gradient-accent: linear-gradient(45deg, #FFD700, #FFA500);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.mainContent {
+  padding-top: 80px;
+}
+
+/* Hero Section */
+.heroSection {
+  background: var(--gradient-primary);
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="islamic" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23islamic)"/></svg>');
+  pointer-events: none;
+}
+
+.heroContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.heroHeader h1 {
+  font-family: 'Amiri', serif;
+  font-size: 4rem;
+  color: var(--text-accent);
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 1s ease-out;
+}
+
+.heroHeader h2 {
+  font-family: 'Amiri', serif;
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.heroHeader p {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-bottom: 40px;
+  animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dateDisplay {
+  margin-bottom: 40px;
+}
+
+.dateCard {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 15px 25px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.dateIcon {
+  font-size: 20px;
+}
+
+.dateText {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.1rem;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.themeSelector {
+  margin-bottom: 40px;
+}
+
+.themeSelector h3 {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.themeButtons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.themeButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  min-width: 120px;
+}
+
+.themeButton:hover {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: var(--text-accent);
+  transform: translateY(-3px);
+}
+
+.themeButton.active {
+  background: rgba(255, 215, 0, 0.3);
+  border-color: var(--text-accent);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+}
+
+.themeIcon {
+  font-size: 24px;
+}
+
+.themeName {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Verse Section */
+.verseSection {
+  padding: 80px 20px;
+  background: var(--bg-secondary);
+}
+
+.verseCard {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--bg-primary);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 40px var(--shadow-color);
+  border: 1px solid var(--border-color);
+}
+
+.verseHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.verseBadge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gradient-accent);
+  color: var(--text-primary);
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+.badgeIcon {
+  font-size: 18px;
+}
+
+.verseInfo {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.surahName {
+  font-family: 'Amiri', serif;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--text-accent);
+}
+
+.ayahNumber {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  background: var(--bg-tertiary);
+  padding: 5px 12px;
+  border-radius: 15px;
+}
+
+.arabicText {
+  font-family: 'Amiri', serif;
+  font-size: 2rem;
+  line-height: 2.5;
+  text-align: right;
+  margin: 30px 0;
+  padding: 30px;
+  background: var(--bg-secondary);
+  border-radius: 15px;
+  border-right: 4px solid var(--text-accent);
+}
+
+.translation, .tafsir, .benefits {
+  margin-bottom: 30px;
+}
+
+.translation h4, .tafsir h4, .benefits h4 {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.4rem;
+  color: var(--text-accent);
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--text-accent);
+}
+
+.translation p, .tafsir p {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.benefitsList {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.benefitItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  background: var(--bg-secondary);
+  border-radius: 10px;
+  border-left: 4px solid var(--text-accent);
+  transition: all 0.3s ease;
+}
+
+.benefitItem:hover {
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.benefitIcon {
+  font-size: 20px;
+  color: var(--text-accent);
+}
+
+/* Previous Verses Section */
+.previousVerses {
+  padding: 80px 20px;
+  background: var(--bg-primary);
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.sectionHeader h3 {
+  font-family: 'Amiri', serif;
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.sectionHeader p {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.versesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.verseItem {
+  background: var(--bg-secondary);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.verseItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px var(--shadow-color);
+}
+
+.verseDate {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+}
+
+.verseTheme {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 15px 0;
+  padding: 8px 12px;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.themeLabel {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.themeValue {
+  color: var(--text-accent);
+  font-weight: bold;
+}
+
+/* Features Section */
+.features {
+  padding: 80px 20px;
+  background: var(--bg-secondary);
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.feature {
+  background: var(--bg-primary);
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px var(--shadow-color);
+}
+
+.featureIcon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.feature h4 {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  margin-bottom: 15px;
+}
+
+.feature p {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+  .heroHeader h1 {
+    font-size: 3rem;
+  }
+  
+  .heroHeader h2 {
+    font-size: 2rem;
+  }
+  
+  .themeButtons {
+    gap: 10px;
+  }
+  
+  .themeButton {
+    min-width: 100px;
+    padding: 12px 15px;
+  }
+  
+  .verseCard {
+    padding: 25px;
+  }
+  
+  .arabicText {
+    font-size: 1.5rem;
+    padding: 20px;
+  }
+  
+  .versesGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .heroHeader h1 {
+    font-size: 2.5rem;
+  }
+  
+  .heroHeader h2 {
+    font-size: 1.8rem;
+  }
+  
+  .themeButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .verseHeader {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+  
+  .arabicText {
+    font-size: 1.3rem;
+    padding: 15px;
+  }
+  
+  .benefitsList {
+    grid-template-columns: 1fr;
+  }
+} 
