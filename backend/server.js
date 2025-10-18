@@ -8,6 +8,9 @@ import azkarRoutes from './routes/azkar.js';
 import hadithRoutes from './routes/hadith.js';
 import authRoutes from './routes/auth.js'; // Import auth routes
 
+console.log('FRONTEND_URL:', process.env.FRONTEND_URL);
+console.log('VITE_API_BASE_URL:', process.env.VITE_API_BASE_URL);
+
 const app = express();
 
 // Connect to MongoDB
@@ -19,7 +22,7 @@ mongoose.connect(process.env.MONGO_URI, {
 .catch(err => console.error(err));
 
 // Middleware
-app.use(cors());
+app.use(cors({ origin: process.env.FRONTEND_URL }));
 app.use(express.json());
 
 // Routes
@@ -28,6 +31,11 @@ app.use('/api/prayer', prayerRoutes);
 app.use('/api/azkar', azkarRoutes);
 app.use('/api/hadith', hadithRoutes);
 app.use('/api/auth', authRoutes); // Use auth routes
+
+// Add a simple root route for testing
+app.get('/', (req, res) => {
+  res.send('Backend is running!');
+});
 
 // Remove the app.listen() call for Vercel deployment
 // const PORT = process.env.PORT || 5000;
