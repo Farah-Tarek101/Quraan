@@ -3,6 +3,6 @@ import app from '../server.js';
 
 const api = express();
 
-api.use('/api', app);
+api.use('/', app); // Changed from '/api' to '/'
 
 export default api;
