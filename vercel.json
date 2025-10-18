@@ -1,12 +1,4 @@
 {
-  "build": {
-    "src": "frontend",
-    "use": "@vercel/static-build",
-    "config": {
-      "outputDirectory": "dist",
-      "buildCommand": "npm run build"
-    }
-  },
   "functions": {
     "backend/api/index.js": {
       "runtime": "nodejs20.x"
