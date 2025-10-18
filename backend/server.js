@@ -27,11 +27,11 @@ app.use(cors({ origin: process.env.FRONTEND_URL }));
 app.use(express.json());
 
 // Routes
-app.use('/api/quran', quranRoutes);
-app.use('/api/prayer', prayerRoutes);
-app.use('/api/azkar', azkarRoutes);
-app.use('/api/hadith', hadithRoutes);
-app.use('/api/auth', authRoutes); // Use auth routes
+app.use('/quran', quranRoutes);
+app.use('/prayer', prayerRoutes);
+app.use('/azkar', azkarRoutes);
+app.use('/hadith', hadithRoutes);
+app.use('/auth', authRoutes); // Use auth routes
 
 // Add a simple root route for testing
 app.get('/', (req, res) => {
