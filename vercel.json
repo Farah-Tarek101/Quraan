@@ -1,6 +1,4 @@
 {
-  "buildCommand": "npm install && cd frontend && npm install && npm run build && cd ../backend && npm install",
-  "outputDirectory": "frontend/dist",
   "functions": {
     "backend/api/index.js": {
       "runtime": "nodejs20.x"
@@ -23,7 +21,7 @@
     },
     {
       "source": "/(.*)",
-      "destination": "/$1"
+      "destination": "/frontend/$1"
     }
   ]
 }
