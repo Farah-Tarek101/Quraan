@@ -1,6 +1,6 @@
 {
   "installCommand": "npm install",
-  "buildCommand": "npx vite build --config frontend/vite.config.js",
+  "buildCommand": "./vercel-build.sh",
   "outputDirectory": "frontend/dist",
   "functions": {
     "backend/api/index.js": {
@@ -24,7 +24,7 @@
     },
     {
       "source": "/(.*)",
-      "destination": "/frontend/$1"
+      "destination": "/$1"
     }
   ]
 }
