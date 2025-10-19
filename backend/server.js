@@ -8,8 +8,11 @@ import azkarRoutes from './routes/azkar.js';
 import hadithRoutes from './routes/hadith.js';
 import authRoutes from './routes/auth.js'; // Import auth routes
 
+console.log('Vercel Environment Check:');
 console.log('FRONTEND_URL:', process.env.FRONTEND_URL);
 console.log('VITE_API_BASE_URL:', process.env.VITE_API_BASE_URL);
+console.log('MONGO_URI (first 10 chars):', process.env.MONGO_URI ? process.env.MONGO_URI.substring(0, 10) : 'Not Set');
+console.log('JWT_SECRET (present):', !!process.env.JWT_SECRET);
 
 const app = express();
 
@@ -25,6 +28,12 @@ mongoose.connect(process.env.MONGO_URI, {
 // Ensure process.env.FRONTEND_URL is correctly set on Vercel (e.g., to https://quraan-kappa.vercel.app)
 app.use(cors({ origin: process.env.FRONTEND_URL }));
 app.use(express.json());
+
+// Log incoming requests
+app.use((req, res, next) => {
+  console.log(`Incoming Request: ${req.method} ${req.originalUrl}`);
+  next();
+});
 
 // Routes
 app.use('/quran', quranRoutes);
