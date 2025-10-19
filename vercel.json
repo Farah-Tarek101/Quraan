@@ -1,6 +1,6 @@
 {
   "installCommand": "npm install",
-  "buildCommand": "./vercel-build.sh",
+  "buildCommand": "bash ./vercel-build.sh",
   "outputDirectory": "frontend/dist",
   "functions": {
     "backend/api/index.js": {
