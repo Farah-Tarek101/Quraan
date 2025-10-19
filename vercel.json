@@ -1,6 +1,6 @@
 {
   "installCommand": "npm install",
-  "buildCommand": "npm run build:frontend",
+  "buildCommand": "vite",
   "functions": {
     "backend/api/index.js": {
       "runtime": "nodejs20.x"
@@ -19,7 +19,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/backend/api/index.js"
+      "destination": "/backend/api/server.js"
     },
     {
       "source": "/(.*)",
