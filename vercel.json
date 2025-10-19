@@ -1,41 +1,30 @@
 {
-  "projects": [
+  "installCommand": "npm install",
+  "buildCommand": "npx vite build --config frontend/vite.config.js",
+  "outputDirectory": "frontend/dist",
+  "functions": {
+    "backend/api/index.js": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "headers": [
     {
-      "root": "frontend",
-      "name": "frontend",
-      "buildCommand": "npm run build",
-      "outputDirectory": "dist"
-    },
-    {
-      "root": "backend",
-      "name": "backend",
-      "functions": {
-        "api/index.js": {
-          "runtime": "nodejs20.x"
-        }
-      },
+      "source": "/api/(.*)",
       "headers": [
-        {
-          "source": "/api/(.*)",
-          "headers": [
-            { "key": "Access-Control-Allow-Origin", "value": "https://quraan-kappa.vercel.app" },
-            { "key": "Access-Control-Allow-Methods", "value": "GET,POST,PUT,DELETE,OPTIONS" },
-            { "key": "Access-Control-Allow-Headers", "value": "X-Requested-With, Content-Type, Authorization" }
-          ]
-        }
-      ],
-      "rewrites": [
-        {
-          "source": "/api/(.*)",
-          "destination": "/api/index.js"
-        }
+        { "key": "Access-Control-Allow-Origin", "value": "https://quraan-kappa.vercel.app" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,PUT,DELETE,OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "X-Requested-With, Content-Type, Authorization" }
       ]
     }
   ],
   "rewrites": [
     {
+      "source": "/api/(.*)",
+      "destination": "/backend/api/index.js"
+    },
+    {
       "source": "/(.*)",
-      "destination": "/frontend/(.*)"
+      "destination": "/frontend/$1"
     }
   ]
 }
