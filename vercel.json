@@ -1,6 +1,6 @@
 {
   "installCommand": "npm install",
-  "buildCommand": "npm run build --prefix frontend",
+  "buildCommand": "npm run build:frontend",
   "functions": {
     "backend/api/index.js": {
       "runtime": "nodejs20.x"
