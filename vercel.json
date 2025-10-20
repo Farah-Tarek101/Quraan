@@ -1,4 +1,6 @@
 {
+  "installCommand": "npm install",
+  "buildCommand": "npm run vercel-build",
   "functions": {
     "backend/api/index.js": {
       "runtime": "nodejs20.x"
