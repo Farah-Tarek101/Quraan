@@ -4,8 +4,7 @@
   "description": "islamic deen website ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "vercel-build": "npm install --prefix frontend && npm run build --prefix frontend && echo 'Backend preparation complete'"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
