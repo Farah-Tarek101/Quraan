@@ -1,4 +1,5 @@
 import 'dotenv/config'; // Correct way to load dotenv in ES modules
+// Temporary comment to trigger new Vercel deployment
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
