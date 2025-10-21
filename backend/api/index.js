@@ -3,6 +3,6 @@ import app from '../server.js';
 
 const api = express();
 
-api.use('/', app); // Changed from '/api' to '/'
+api.use('/', app; // INTENTIONAL SYNTAX ERROR
 
 export default api;
