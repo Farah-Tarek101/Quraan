@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Use environment variable if available, otherwise fallback to local dev URL
 const BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
+  import.meta.env.VITE_API_BASE_URL || "https://quraan-r9c3.vercel.app/api";
 
 const API_URL = `${BASE_URL}/auth`;
 
