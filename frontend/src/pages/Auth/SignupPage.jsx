@@ -1,28 +1,31 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import styles from './Auth.module.css';
-import authService from '../../services/authService'; // Import authService
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import styles from "./Auth.module.css";
+import authService from "../../services/authService";
 
 const SignupPage = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      alert('Passwords do not match');
+      alert("⚠️ كلمتا المرور غير متطابقتين");
       return;
     }
+
     try {
       await authService.register(username, email, password);
-      alert('Registration successful!');
-      navigate('/login'); // Redirect to login on successful signup
+      alert("✅ تم إنشاء الحساب بنجاح!");
+      navigate("/login");
     } catch (error) {
-      console.error('Signup failed:', error.response.data.message || error.message);
-      alert(error.response.data.message || 'Registration failed');
+      const message =
+        error.response?.data?.message || "فشل في إنشاء الحساب. حاول لاحقًا.";
+      console.error("Signup failed:", message);
+      alert(message);
     }
   };
 
@@ -42,6 +45,7 @@ const SignupPage = () => {
               className={styles.formInput}
             />
           </div>
+
           <div className={styles.formGroup}>
             <label htmlFor="email">البريد الإلكتروني</label>
             <input
@@ -53,6 +57,7 @@ const SignupPage = () => {
               className={styles.formInput}
             />
           </div>
+
           <div className={styles.formGroup}>
             <label htmlFor="password">كلمة المرور</label>
             <input
@@ -64,6 +69,7 @@ const SignupPage = () => {
               className={styles.formInput}
             />
           </div>
+
           <div className={styles.formGroup}>
             <label htmlFor="confirmPassword">تأكيد كلمة المرور</label>
             <input
@@ -75,8 +81,12 @@ const SignupPage = () => {
               className={styles.formInput}
             />
           </div>
-          <button type="submit" className={styles.authButton}>إنشاء حساب</button>
+
+          <button type="submit" className={styles.authButton}>
+            إنشاء حساب
+          </button>
         </form>
+
         <p className={styles.authLink}>
           لديك حساب بالفعل؟ <Link to="/login">تسجيل الدخول</Link>
         </p>
