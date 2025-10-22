@@ -27,7 +27,13 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // Middleware
 // Ensure process.env.FRONTEND_URL is correctly set on Vercel (e.g., to https://quraan-kappa.vercel.app)
-app.use(cors({ origin: process.env.FRONTEND_URL }));
+// ✅ Improved CORS configuration
+app.use(cors({
+  origin: process.env.FRONTEND_URL?.replace(/\/$/, ''), // remove trailing slash if any
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true,
+}));
+
 app.use(express.json());
 
 // Log incoming requests
