@@ -1,5 +1,7 @@
 import styles from './Footer.module.css';
 import logo from '../../assets/icons/logo.png';
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
     return (
         <footer id='footer'>
@@ -13,13 +15,16 @@ const Footer = () => {
           
             <div className={styles.sections}>
                 <h2>الأقسام</h2>
-                <a href="#hero"> الرئيسية</a>
-                <a href="#prayers"> مواعيد الصلاة </a>
-                <a href="#azkar"> الأذكار </a>
-                <a href="#quran"> القرآن الكريم </a>
-                <a href="/"> الأحاديث </a>
-
+                <Link to="/">الرئيسية</Link>
+                <Link to="/prayers">مواعيد الصلاة</Link>
+                <Link to="/azkar">الأذكار</Link>
+                <Link to="/quran">القرآن الكريم</Link>
+                <Link to="/hadith">الأحاديث</Link>
+                <Link to="/tasbih">التسبيح</Link>
+                <Link to="/login">تسجيل الدخول</Link>
+                <Link to="/signup">إنشاء حساب</Link>
             </div>
+
             <div className={styles.links}>
                 <h2>مواقع مفيدة</h2>
                 <a href='https://www.dar-alifta.org/ar'> دار الإفتاء المصرية</a>
