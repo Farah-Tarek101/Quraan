@@ -1,11 +1,12 @@
 .hadithSection {
-  padding: 50px 30px;
+  padding: 100px 30px 50px; /* ✅ add top padding for fixed navbar */
   text-align: center;
   background: var(--background-color);
   color: var(--text-color);
   min-height: 100vh;
   direction: rtl;
 }
+
 
 /* 🔤 Title */
 .title {
