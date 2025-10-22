@@ -14,7 +14,7 @@ const HadithPage = () => {
 
   const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
-  // ✅ Fetch categories
+  // ✅ Fetch categories only once
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -28,48 +28,63 @@ const HadithPage = () => {
         }
 
         setCategories(data);
-        setSelectedCategory(data[0]?.id || null);
         setError(null);
       } catch (err) {
         console.error("❌ Error fetching categories:", err);
         setError("Failed to fetch categories");
       }
     };
+
     fetchCategories();
   }, [language]);
 
-  // ✅ Fetch hadith list
-  useEffect(() => {
-    if (!selectedCategory) return;
+  // ✅ Fetch hadiths when category is clicked
+  const handleCategoryClick = async (categoryId) => {
+    setSelectedCategory(categoryId);
+    setHadiths([]); // Clear old hadiths
+    setLoading(true);
+    setError(null);
+    setPage(1);
 
-    const fetchHadiths = async () => {
-      setLoading(true);
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 12000); // 12s timeout
+    try {
+      const res = await fetch(
+        `${API_BASE}/hadith/list?language=${language}&category_id=${categoryId}&page=1`
+      );
+      const data = await res.json();
 
-      try {
-        const res = await fetch(
-          `${API_BASE}/hadith/list?language=${language}&category_id=${selectedCategory}&page=${page}`,
-          { signal: controller.signal }
-        );
-
-        const data = await res.json();
-        setHadiths(data.data || []);
-        setError(null);
-      } catch (err) {
-        console.error("❌ Error fetching hadiths:", err);
-        if (err.name === "AbortError") {
-          setError("Request timed out. Please try again.");
-        } else {
-          setError("Failed to fetch hadiths");
-        }
-      } finally {
-        clearTimeout(timeout);
-        setLoading(false);
+      if (data && data.data) {
+        setHadiths(data.data);
+      } else {
+        setHadiths([]);
       }
-    };
-    fetchHadiths();
-  }, [selectedCategory, language, page]);
+    } catch (err) {
+      console.error("❌ Error fetching hadiths:", err);
+      setError("Failed to fetch hadiths");
+    }
+
+    setLoading(false);
+  };
+
+  // ✅ Handle pagination
+  const handlePageChange = async (newPage) => {
+    if (!selectedCategory) return;
+    setPage(newPage);
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch(
+        `${API_BASE}/hadith/list?language=${language}&category_id=${selectedCategory}&page=${newPage}`
+      );
+      const data = await res.json();
+      setHadiths(data.data || []);
+    } catch (err) {
+      console.error("❌ Error fetching hadiths:", err);
+      setError("Failed to fetch hadiths");
+    }
+
+    setLoading(false);
+  };
 
   return (
     <div className={style.hadithSection}>
@@ -91,18 +106,17 @@ const HadithPage = () => {
         </button>
       </div>
 
-      {/* 🕌 Category Section */}
+      {/* 📚 Category Section */}
       <div className={style.categoryList}>
         {error ? (
           <p className={style.error}>{error}</p>
-        ) : Array.isArray(categories) && categories.length > 0 ? (
+        ) : categories.length === 0 ? (
+          <p>جارٍ تحميل الأقسام...</p>
+        ) : (
           categories.map((cat) => (
             <button
               key={cat.id}
-              onClick={() => {
-                setSelectedCategory(cat.id);
-                setPage(1);
-              }}
+              onClick={() => handleCategoryClick(cat.id)}
               className={
                 selectedCategory === cat.id ? style.activeCategory : ""
               }
@@ -110,21 +124,15 @@ const HadithPage = () => {
               {cat.title}
             </button>
           ))
-        ) : (
-          <p>No categories found.</p>
         )}
       </div>
 
       {/* 📜 Hadith Section */}
       <div className={style.hadithGrid}>
         {loading ? (
-          <div className={style.loader}>
-            <div className={style.spinner}></div>
-          </div>
-        ) : error ? (
-          <p className={style.error}>{error}</p>
-        ) : hadiths.length === 0 ? (
-          <p>No Hadith found.</p>
+          <p>جارٍ تحميل الأحاديث...</p>
+        ) : hadiths.length === 0 && selectedCategory ? (
+          <p>لا توجد أحاديث في هذا القسم.</p>
         ) : (
           hadiths.map((h) => (
             <div key={h.id} className={style.hadithCard}>
@@ -132,13 +140,13 @@ const HadithPage = () => {
               <button
                 onClick={() =>
                   window.open(
-                    `https://hadeethenc.com/en/browse/hadith/${h.id}`,
+                    `https://hadeethenc.com/${language}/browse/hadith/${h.id}`,
                     "_blank"
                   )
                 }
                 className={style.viewButton}
               >
-                View
+                عرض الحديث
               </button>
             </div>
           ))
@@ -146,16 +154,23 @@ const HadithPage = () => {
       </div>
 
       {/* 🔁 Pagination */}
-      <div className={style.pagination}>
-        <button
-          onClick={() => setPage((p) => Math.max(p - 1, 1))}
-          disabled={page === 1}
-        >
-          Prev
-        </button>
-        <span>Page {page}</span>
-        <button onClick={() => setPage((p) => p + 1)}>Next</button>
-      </div>
+      {selectedCategory && hadiths.length > 0 && (
+        <div className={style.pagination}>
+          <button
+            onClick={() => handlePageChange(Math.max(page - 1, 1))}
+            disabled={page === 1 || loading}
+          >
+            السابق
+          </button>
+          <span>الصفحة {page}</span>
+          <button
+            onClick={() => handlePageChange(page + 1)}
+            disabled={loading}
+          >
+            التالي
+          </button>
+        </div>
+      )}
 
       <Footer />
     </div>

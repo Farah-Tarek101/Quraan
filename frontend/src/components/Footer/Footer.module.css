@@ -8,149 +8,155 @@ footer {
   grid-template-rows: auto auto auto;
   grid-template-areas:
     "logo logo logo logo"
-    "links sections azkar ahadith"
+    "sections azkar ahadith links" /* ✅ sections on the right, links on the left */
     "copyright copyright copyright copyright";
   gap: 1rem;
 }
 
-  
-  .azkar,
-  .ahadith,
-  .sections,
-  .links {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 1rem;
-    border-radius: 10px;
-    color: var(--text-color); /* white text for readability */
+.azkar,
+.ahadith,
+.sections,
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 10px;
+  color: var(--text-color);
+}
+
+h2 {
+  font-size: 1.7rem;
+  font-family: var(--font-family-arabic);
+  color: var(--main-color);
+  text-shadow: 0 0 8px var(--shadow-light);
+  margin-bottom: 1rem;
+}
+
+.logo {
+  grid-area: logo;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: var(--font-family-arabic);
+  color: var(--text-color);
+  text-shadow: 0 0 8px var(--shadow-light);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.links {
+  grid-area: links;
+  align-items: flex-end; /* ✅ moves them to the left visually (RTL layout) */
+  text-align: left;
+}
+
+.sections {
+  grid-area: sections;
+  align-items: flex-start; /* ✅ stays on the right */
+  text-align: right;
+}
+
+.copyright {
+  grid-area: copyright;
+  text-align: center;
+  background: var(--main-color);
+  width: 100%;
+  padding: 1rem;
+  margin: 0;
+  color: var(--background-color);
+  font-family: var(--font-family-arabic);
+}
+
+.copyright a {
+  color: var(--background-color);
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow: 0 0 5px var(--shadow-light);
+}
+
+.developerLink {
+  color: var(--background-color) !important;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: var(--font-family-arabic);
+  font-size: 1.2rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.developerLink::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.developerLink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-medium);
+  background: linear-gradient(135deg, var(--ayah-background-color), var(--ayah-background-color));
+}
+
+.developerLink:hover::before {
+  left: 100%;
+}
+
+.developerLink:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px var(--shadow-light);
+}
+
+/* ✅ Responsive adjustments */
+@media (max-width: 1024px) {
+  footer {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "logo logo"
+      "sections links"
+      "azkar ahadith"
+      "copyright copyright";
+    padding: 0.8rem;
+    gap: 0.8rem;
   }
-  
-  h2 {
-    font-size: 1.7rem;
-    font-family: var(--font-family-arabic);
-    color: var(--main-color); /* blue headings */
-    text-shadow: 0 0 8px var(--shadow-light); /* soft glow */
-    margin-bottom: 1rem;
+  h2 { font-size: 1.5rem; }
+  .logo { font-size: 1.3rem; padding: 0.8rem; }
+  .developerLink { font-size: 1.1rem; }
+}
+
+@media (max-width: 768px) {
+  footer {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "logo"
+      "sections"
+      "links"
+      "azkar"
+      "ahadith"
+      "copyright";
+    padding: 0.5rem;
+    gap: 0.5rem;
   }
-  
-  .logo {
-    grid-area: logo;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    font-family: var(--font-family-arabic);
-    color: var(--text-color);
-    text-shadow: 0 0 8px var(--shadow-light);
-    padding: 1rem;
-    border-radius: 0.5rem;
-  }
-  
-  .copyright {
-    grid-area: copyright;
+  .azkar, .ahadith, .sections, .links {
     text-align: center;
-    background: var(--main-color); /* main blue */
-    width: 100%;
-    padding: 1rem;
-    margin: 0;
-    color: var(--background-color); /* dark text on blue */
-    font-family: var(--font-family-arabic);
+    align-items: center;
   }
-  
-  .copyright a {
-    color: var(--background-color);
-    font-weight: bold;
-    text-decoration: none;
-    text-shadow: 0 0 5px var(--shadow-light);
-  }
-  
-  .developerLink {
-    color: var(--background-color) !important;
-    text-decoration: none;
-    font-weight: bold;
-    font-family: var(--font-family-arabic);
-    font-size: 1.2rem;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .developerLink::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s ease;
-  }
-  
-  .developerLink:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--shadow-medium);
-    background: linear-gradient(135deg, var(--ayah-background-color), var(--ayah-background-color));
-  }
-  
-  .developerLink:hover::before {
-    left: 100%;
-  }
-  
-  .developerLink:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 6px var(--shadow-light);
-  }
-  .links {
-    align-items: flex-start;
-    text-align: left;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 1024px) {
-    footer {
-      grid-template-columns: 1fr 1fr;
-      grid-template-areas:
-        "logo logo"
-        "azkar ahadith"
-        "sections links"
-        "copyright copyright";
-      padding: 0.8rem;
-      gap: 0.8rem;
-    }
-    h2 { font-size: 1.5rem; }
-    .logo { font-size: 1.3rem; padding: 0.8rem; }
-    .developerLink { font-size: 1.1rem; }
-  }
-  
-  @media (max-width: 768px) {
-    footer {
-      grid-template-columns: 1fr;
-      grid-template-areas:
-        "logo"
-        "azkar"
-        "ahadith"
-        "sections"
-        "links"
-        "copyright";
-      padding: 0.5rem;
-      gap: 0.5rem;
-    }
-    .azkar, .ahadith, .sections, .links {
-      text-align: center;
-      align-items: center;
-    }
-    h2 { font-size: 1.3rem; }
-    .logo { font-size: 1.2rem; }
-  }
-  
-  @media (max-width: 480px) {
-    footer { padding: 0.3rem; }
-    h2 { font-size: 1.1rem; }
-    .logo { font-size: 1rem; }
-  }
-  
+  h2 { font-size: 1.3rem; }
+  .logo { font-size: 1.2rem; }
+}
+
+@media (max-width: 480px) {
+  footer { padding: 0.3rem; }
+  h2 { font-size: 1.1rem; }
+  .logo { font-size: 1rem; }
+}
