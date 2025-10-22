@@ -11,14 +11,13 @@ const HadithPage = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
   // ✅ Fetch categories
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch(
-          `http://localhost:5000/api/hadith/categories?language=${language}`
-        );
+       
+const res = await fetch(`${API_BASE}/hadith/categories?language=${language}`);
         const data = await res.json();
 
         if (!Array.isArray(data)) {
@@ -46,8 +45,9 @@ const HadithPage = () => {
       setLoading(true);
       try {
         const res = await fetch(
-          `http://localhost:5000/api/hadith/list?language=${language}&category_id=${selectedCategory}&page=${page}`
+          `${API_BASE}/hadith/list?language=${language}&category_id=${selectedCategory}&page=${page}`
         );
+        
         const data = await res.json();
         setHadiths(data.data || []);
         setError(null);
