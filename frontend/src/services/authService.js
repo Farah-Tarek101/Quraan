@@ -1,12 +1,12 @@
 import axios from "axios";
 
-// Use environment variable if available, otherwise fallback to local dev URL
+// ✅ Use environment variable if available, otherwise fallback to local dev URL
 const BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "https://quraan-r9c3.vercel.app/api";
+  import.meta.env.VITE_API_BASE_URL || "https://quraan-r9c3.vercel.app";
 
 const API_URL = `${BASE_URL}/auth`;
 
-// Automatically attach Authorization header if token is found
+// ✅ Automatically attach Authorization header if token is found
 const authHeaders = (token) => ({
   headers: { Authorization: `Bearer ${token}` },
 });
@@ -51,3 +51,4 @@ const authService = {
 };
 
 export default authService;
+
