@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Play, Pause, BookOpen, Clock, Heart, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import styles from './HomePage.module.css';
@@ -22,7 +23,6 @@ const HomePage = () => {
       .catch(() => console.error('Failed to load Ayah'));
   }, [ayahNumber]);
 
-  // Handle play/pause
   const handleAyahPlay = () => {
     if (!audioRef.current) return;
     if (audioRef.current.paused) {
@@ -34,9 +34,8 @@ const HomePage = () => {
     }
   };
 
-  // Load new ayah
   const loadNewAyah = () => {
-    const newNumber = Math.floor(Math.random() * 6236) + 1; // Total ayahs in Quran
+    const newNumber = Math.floor(Math.random() * 6236) + 1;
     setAyahNumber(newNumber);
     setIsPlaying(false);
   };
@@ -44,7 +43,7 @@ const HomePage = () => {
   return (
     <div className={styles['app-container']} dir="rtl">
       <Navbar />
-      
+
       {/* Hero Section */}
       <div className={styles.hero}>
         <h1>بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</h1>
@@ -78,23 +77,23 @@ const HomePage = () => {
 
       {/* Features Section */}
       <div className={styles.features}>
-        <div className={styles.featureCard}>
+        <Link to="/quran" className={styles.featureCard}>
           <BookOpen className={styles.featureIcon} />
           <h3>القرآن الكريم</h3>
           <p>اقرأ القرآن الكريم كاملاً مع التفسير والترجمة</p>
-        </div>
-        
-        <div className={styles.featureCard}>
+        </Link>
+
+        <Link to="/prayers" className={styles.featureCard}>
           <Clock className={styles.featureIcon} />
           <h3>مواعيد الصلاة</h3>
           <p>احصل على مواعيد الصلاة الدقيقة لموقعك الحالي</p>
-        </div>
-        
-        <div className={styles.featureCard}>
+        </Link>
+
+        <Link to="/azkar" className={styles.featureCard}>
           <Heart className={styles.featureIcon} />
           <h3>الأذكار</h3>
           <p>أذكار الصباح والمساء والنوم لتقوية الذكر</p>
-        </div>
+        </Link>
       </div>
 
       <Footer />

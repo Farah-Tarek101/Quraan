@@ -207,129 +207,68 @@
     max-width: 1200px;
     margin: 0 auto;
   }
-  
-  .featureCard {
-    background: var(--card-background);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 3rem 2rem;
-    text-align: center;
-    box-shadow: 0 4px 20px var(--shadow-light);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .featureCard::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--main-color), var(--main2-color));
-  }
-  
-  .featureCard:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 40px var(--shadow-medium);
-  }
-  
-  .featureIcon {
-    width: 64px;
-    height: 64px;
-    color: var(--main-color);
-    margin-bottom: 1.5rem;
-    transition: transform 0.3s ease;
-  }
-  
-  .featureCard:hover .featureIcon {
-    transform: scale(1.1);
-  }
-  
-  .featureCard h3 {
-    font-size: 1.8rem;
-    color: var(--main-color);
-    margin-bottom: 1rem;
-    font-weight: 700;
-    font-family: var(--font-family-arabic);
-  }
-  
-  .featureCard p {
-    font-size: 1.1rem;
-    color: var(--text-color);
-    line-height: 1.8;
-    opacity: 0.9;
-    font-family: var(--font-family-arabic);
-  }
-  
-  @media (max-width: 768px) {
-    .hero {
-      padding: 2rem 1rem;
-    }
-    
-    .hero h1 {
-      font-size: 2rem;
-    }
-  
-    .ayah {
-      font-size: 1.4rem;
-      padding: 2rem 1.5rem;
-      line-height: 2.5rem;
-    }
-    
-    .ayah-play-button {
-      font-size: 1.2rem;
-      padding: 1rem 2rem;
-    }
+  /* Make cards clickable (links look like cards) */
+.featureCard {
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
 
-    .ayahActions {
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .welcome-section {
-      padding: 2rem 1rem;
-    }
-    
-    .welcome-title {
-      font-size: 2rem;
-    }
-    
-    .welcome-text {
-      font-size: 1.1rem;
-    }
-    
-    .features {
-      padding: 2rem 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-    
-    .featureCard {
-      padding: 2rem 1.5rem;
-    }
-    
-    .featureCard h3 {
-      font-size: 1.6rem;
-    }
-    
-    .featureCard p {
-      font-size: 1rem;
-    }
+.featureCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px var(--shadow-medium);
+}
+
+/* Ensure responsiveness for all screens */
+@media screen and (max-width: 1024px) {
+  .hero h1 {
+    font-size: 2.4rem;
   }
-  
-  @media (max-width: 480px) {
-    .hero h1 {
-      font-size: 1.8rem;
-    }
-    
-    .ayah {
-      font-size: 1.2rem;
-      padding: 1.5rem 1rem;
-    }
-    
-    .welcome-title {
-      font-size: 1.8rem;
-    }
+
+  .ayah {
+    font-size: 1.6rem;
   }
-  
+}
+
+@media screen and (max-width: 768px) {
+  .features {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .featureCard {
+    padding: 2rem 1.5rem;
+  }
+
+  .featureIcon {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .ayah {
+    font-size: 1.2rem;
+    padding: 1.5rem;
+  }
+
+  .features {
+    padding: 2rem 1rem;
+  }
+
+  .featureCard h3 {
+    font-size: 1.4rem;
+  }
+
+  .featureCard p {
+    font-size: 1rem;
+  }
+}

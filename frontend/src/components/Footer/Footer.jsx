@@ -9,25 +9,8 @@ const Footer = () => {
                 <p>الكريم</p>
 
             </div>
-            <div className={styles.azkar}>
-                <h2>أذكار</h2>
-                <ul>
-                    <li>أذكار الصباح</li>
-                    <li>أذكار المساء</li>
-                    <li>أذكار النوم</li>
-                    <li>أذكار الصلاة</li>
-                    <li>أذكار الاستيقاظ</li>
-                </ul>
-            </div>
-            <div className={styles.ahadith}>
-                <h2>أحاديث</h2>
-                <a href="https://hadeethenc.com/ar/browse/category/1">  القرآن الكريم وعلومه </a>
-                <a href="https://hadeethenc.com/ar/browse/category/4"> الفقه وأصوله  </a>
-                <a href="https://hadeethenc.com/ar/browse/category/7"> السيرة والتاريخ  </a>
-                <a href="https://hadeethenc.com/ar/browse/category/2"> الحديث وعلومه  </a>
-                <a href='https://hadeethenc.com/ar/browse/category/6'>الدعوة والحسبة</a>
-
-            </div>
+          
+          
             <div className={styles.sections}>
                 <h2>الأقسام</h2>
                 <a href="#hero"> الرئيسية</a>

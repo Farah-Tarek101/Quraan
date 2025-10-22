@@ -11,13 +11,14 @@ const HadithPage = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
   const API_BASE = import.meta.env.VITE_API_BASE_URL;
+
   // ✅ Fetch categories
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-       
-const res = await fetch(`${API_BASE}/hadith/categories?language=${language}`);
+        const res = await fetch(`${API_BASE}/hadith/categories?language=${language}`);
         const data = await res.json();
 
         if (!Array.isArray(data)) {
@@ -43,19 +44,29 @@ const res = await fetch(`${API_BASE}/hadith/categories?language=${language}`);
 
     const fetchHadiths = async () => {
       setLoading(true);
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 12000); // 12s timeout
+
       try {
         const res = await fetch(
-          `${API_BASE}/hadith/list?language=${language}&category_id=${selectedCategory}&page=${page}`
+          `${API_BASE}/hadith/list?language=${language}&category_id=${selectedCategory}&page=${page}`,
+          { signal: controller.signal }
         );
-        
+
         const data = await res.json();
         setHadiths(data.data || []);
         setError(null);
       } catch (err) {
         console.error("❌ Error fetching hadiths:", err);
-        setError("Failed to fetch hadiths");
+        if (err.name === "AbortError") {
+          setError("Request timed out. Please try again.");
+        } else {
+          setError("Failed to fetch hadiths");
+        }
+      } finally {
+        clearTimeout(timeout);
+        setLoading(false);
       }
-      setLoading(false);
     };
     fetchHadiths();
   }, [selectedCategory, language, page]);
@@ -64,6 +75,7 @@ const res = await fetch(`${API_BASE}/hadith/categories?language=${language}`);
     <div className={style.hadithSection}>
       <Navbar />
 
+      {/* 🌐 Language Switch */}
       <div className={style.languageSwitch}>
         <button
           onClick={() => setLanguage("en")}
@@ -79,7 +91,7 @@ const res = await fetch(`${API_BASE}/hadith/categories?language=${language}`);
         </button>
       </div>
 
-      {/* ✅ Category Section */}
+      {/* 🕌 Category Section */}
       <div className={style.categoryList}>
         {error ? (
           <p className={style.error}>{error}</p>
@@ -103,10 +115,14 @@ const res = await fetch(`${API_BASE}/hadith/categories?language=${language}`);
         )}
       </div>
 
-      {/* ✅ Hadith Section */}
+      {/* 📜 Hadith Section */}
       <div className={style.hadithGrid}>
         {loading ? (
-          <p>Loading...</p>
+          <div className={style.loader}>
+            <div className={style.spinner}></div>
+          </div>
+        ) : error ? (
+          <p className={style.error}>{error}</p>
         ) : hadiths.length === 0 ? (
           <p>No Hadith found.</p>
         ) : (
@@ -129,7 +145,7 @@ const res = await fetch(`${API_BASE}/hadith/categories?language=${language}`);
         )}
       </div>
 
-      {/* ✅ Pagination */}
+      {/* 🔁 Pagination */}
       <div className={style.pagination}>
         <button
           onClick={() => setPage((p) => Math.max(p - 1, 1))}
